@@ -33,6 +33,6 @@ android {
 dependencies {
     implementation "androidx.core:core-ktx:1.13.1"
     // OpenCV Android AAR from Maven Central (QuickBird build). Provides org.opencv.* + native .so.
-    implementation "com.quickbirdstudios:opencv:4.9.0"
+    implementation "com.quickbirdstudios:opencv:4.5.3"
     testImplementation "junit:junit:4.13.2"
 }
