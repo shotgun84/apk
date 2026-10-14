@@ -60,6 +60,15 @@ class FloatingService : Service() {
             }
             val pm = getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
             projection = pm.getMediaProjection(rc, data!!)
+            // Android 14+ throws ("must register a callback") if no callback
+            // is registered before createVirtualDisplay().
+            try {
+                projection?.registerCallback(object : MediaProjection.Callback() {
+                    override fun onStop() {
+                        stopSelf()
+                    }
+                }, ui)
+            } catch (_: Exception) { }
             showButton()
         }
         return START_STICKY
@@ -178,7 +187,7 @@ class FloatingService : Service() {
         val frame = FrameLayout(this).apply {
             setOnClickListener { dismissResult() } // tap anywhere to dismiss
         }
-        val (bx, by) = board.bbox.x to board.bbox.y
+        val (bx, by) = board.left to board.top
         for ((r, c) in sol) {
             val (x1, x2) = board.cellsX[c]
             val (y1, y2) = board.cellsY[r]

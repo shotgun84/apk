@@ -13,7 +13,6 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import org.opencv.android.OpenCVLoader
 
 class MainActivity : Activity() {
 
@@ -23,15 +22,6 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val ocvOk = try {
-            OpenCVLoader.initDebug()
-        } catch (_: UnsatisfiedLinkError) {
-            false
-        }
-        if (!ocvOk) {
-            Toast.makeText(this, "OpenCV init failed, solver may not work", Toast.LENGTH_LONG).show()
-        }
 
         val layout = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
