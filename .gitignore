@@ -1,0 +1,9 @@
+# Gradle / Android
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+# Keystores never belong in git
+*.jks
+*.keystore

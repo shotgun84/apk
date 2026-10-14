@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meowdoku Overlay</string>
+    <string name="overlay_channel">Meowdoku solver</string>
+    <string name="how_to">1. Grant Display-over-apps + Screen-record below.\n2. Open Meowdoku, tap the floating cat.\n3. Cats appear over the board. Tap them to dismiss.</string>
+</resources>
