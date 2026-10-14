@@ -24,7 +24,12 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (!OpenCVLoader.initLocal()) {
+        val ocvOk = try {
+            OpenCVLoader.initDebug()
+        } catch (_: UnsatisfiedLinkError) {
+            false
+        }
+        if (!ocvOk) {
             Toast.makeText(this, "OpenCV init failed, solver may not work", Toast.LENGTH_LONG).show()
         }
 
